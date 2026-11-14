@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bakes & Cakes BakeHouse | Cake in a can</title>
+<meta name="description" content="Fresh cake in a can from Bakes & Cakes BakeHouse, baked without preservatives. Pick your flavour and order by call or WhatsApp.">
+<meta name="theme-color" content="#ff4f9a">
+<meta property="og:title" content="Bakes & Cakes BakeHouse">
+<meta property="og:description" content="Fresh cake in a can, baked without preservatives. Pick your flavour and order today.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff4f9a'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 26 V19 Q23 15 27 15 H37 Q41 15 41 19 V26'/%3E%3Cpath d='M17 36 V29 Q17 26 20 26 H44 Q47 26 47 29 V36'/%3E%3Crect x='14' y='36' width='36' height='20' rx='3'/%3E%3Cpath d='M24 43 l4 4 m0 -4 l-4 4 M36 43 l4 4 m0 -4 l-4 4'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --display:'Bricolage Grotesque','Avenir Next','Trebuchet MS',system-ui,sans-serif;
+  --body:'Figtree','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --ink:#2b0f1c; --fg:#2b0f1c;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:#2b0f1c;overscroll-behavior:none}
+body{font-family:var(--body);color:var(--fg);-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+button,a{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #fff;outline-offset:2px;box-shadow:0 0 0 5px var(--ink)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sr:focus{width:auto;height:auto;clip:auto;z-index:20;left:8px;top:8px;background:#fff;color:#000;padding:.5rem .8rem;border-radius:8px}
+
+#stage{position:fixed;inset:0;overflow:hidden;color:var(--fg);transition:color .4s}
+
+/* backgrounds */
+.bg{position:absolute;inset:0;overflow:hidden;animation:bgin .6s ease both}
+@keyframes bgin{from{opacity:0}to{opacity:1}}
+.bg:before{content:"";position:absolute;width:150vmax;height:150vmax;left:-25vmax;top:-45vmax;background:radial-gradient(circle at 30% 32%,rgba(255,255,255,.38),transparent 38%),radial-gradient(circle at 72% 62%,rgba(255,255,255,.2),transparent 34%);animation:spin 50s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sprinkle{position:absolute;top:-6vh;border-radius:99px;opacity:.9;animation:fall linear infinite}
+@keyframes fall{from{transform:translate3d(0,-8vh,0) rotate(0)}to{transform:translate3d(var(--dx,20px),112vh,0) rotate(540deg)}}
+
+/* top bar */
+.bars{position:absolute;z-index:4;left:14px;right:14px;top:calc(10px + env(safe-area-inset-top));display:flex;gap:4px}
+.bars i{flex:1;height:4px;border-radius:4px;background:color-mix(in srgb,var(--fg) 22%,transparent);overflow:hidden}
+.bars b{display:block;height:100%;width:0;border-radius:4px;background:var(--fg)}
+.bars .done b{width:100%}
+.bars .on b{animation:fill var(--dur,6s) linear forwards}
+.bars .on.last b{animation:none;width:100%}
+@keyframes fill{to{width:100%}}
+.top{position:absolute;z-index:4;left:14px;right:14px;top:calc(24px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.5rem;font:700 .85rem/1 var(--body);letter-spacing:.01em}
+.logo svg{width:26px;height:26px;flex:none}
+.pp{width:40px;height:40px;border-radius:50%;border:0;background:color-mix(in srgb,var(--fg) 14%,transparent);display:grid;place-items:center;cursor:pointer}
+.pp svg{width:18px;height:18px;fill:var(--fg)}
+
+/* tap zone + content */
+.zone{position:absolute;inset:0;z-index:1;touch-action:manipulation}
+.slide{position:absolute;z-index:2;left:0;right:0;top:calc(76px + env(safe-area-inset-top));bottom:calc(86px + env(safe-area-inset-bottom));padding:0 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(.5rem,1.8vh,1.1rem);pointer-events:none}
+.slide a,.slide button{pointer-events:auto}
+.pop{animation:pop .75s cubic-bezier(.2,1.5,.4,1) calc(var(--i,0)*.11s + .1s) both}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.88)}to{opacity:1;transform:none}}
+
+.chip{display:inline-block;padding:.4rem 1rem;border-radius:99px;background:rgba(255,255,255,.42);font-weight:700;font-size:.92rem}
+.h1{font:800 clamp(2.5rem,12.5vw,4rem)/.92 var(--display);letter-spacing:-.025em;margin:0}
+.h2{font:800 clamp(2rem,9.5vw,3rem)/.98 var(--display);letter-spacing:-.02em;margin:0}
+.sub{font-size:1.05rem;font-weight:500;max-width:21rem;margin:0}
+.hint{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.95rem}
+.hint:before{content:"";width:14px;height:14px;border-radius:50%;background:var(--fg);animation:pulse 1.4s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--fg) 55%,transparent)}100%{box-shadow:0 0 0 16px transparent}}
+
+/* cans */
+.can{width:min(50vw,30dvh,230px);animation:drop .95s cubic-bezier(.3,1.6,.5,1) .15s both,bob 4s ease-in-out 1.3s infinite}
+.can svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 18px rgba(0,0,0,.25))}
+.can img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:28px;display:block;box-shadow:0 14px 28px rgba(0,0,0,.28)}
+@keyframes drop{from{opacity:0;transform:translateY(-60vh) rotate(-14deg)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.tw{transform-box:fill-box;transform-origin:center;animation:tw 1.6s ease-in-out infinite alternate}
+.tw2{animation-delay:.8s}
+@keyframes tw{from{transform:scale(.4);opacity:.5}to{transform:scale(1.15);opacity:1}}
+.trio{display:flex;justify-content:center;align-items:flex-end;height:min(30dvh,240px)}
+.trio .can{width:min(33vw,24dvh,150px);animation:drop .95s cubic-bezier(.3,1.6,.5,1) calc(var(--i)*.14s + .1s) both,bob 4s ease-in-out calc(var(--i)*.3s + 1.3s) infinite}
+.trio .can:nth-child(1){transform:rotate(-9deg);margin-right:-8%}
+.trio .can:nth-child(3){transform:rotate(9deg);margin-left:-8%}
+.trio .can:nth-child(2){z-index:1;margin-bottom:12px}
+
+/* photo slides */
+.bg.has-photo:before{display:none}
+.cover{position:absolute;left:0;right:0;top:0;height:74%;overflow:hidden;animation:kenburns 14s ease-out both}
+.cover img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,0,6,.45),rgba(20,0,6,0) 22%,rgba(20,0,6,0) 58%,var(--end) 100%)}
+@keyframes kenburns{from{transform:scale(1.08)}to{transform:scale(1)}}
+.slide.photo{justify-content:flex-end;padding-bottom:4px}
+.slide.photo .h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.layers{width:auto;max-width:100%;max-height:min(48dvh,460px);border-radius:26px;box-shadow:0 16px 36px rgba(0,0,0,.35);display:block}
+.keys{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center}
+.keys span{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .85rem;border-radius:99px;background:rgba(255,255,255,.92);color:#2b0f1c;font-weight:700;font-size:.9rem}
+.keys i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
+.allergy{font-size:.9rem}
+
+/* cards */
+.wcard{width:100%;max-width:22rem;background:rgba(255,255,255,.93);color:#2b0f1c;border-radius:26px;padding:1rem 1.2rem 1.1rem;box-shadow:0 14px 34px rgba(0,0,0,.2)}
+.wcard .dt{font-size:.82rem;font-weight:600;opacity:.7}
+.wcard .lb{display:inline-block;margin:.35rem 0 .25rem;padding:.2rem .7rem;border-radius:99px;background:#ff4f9a;color:#fff;font-weight:700;font-size:.8rem}
+.wcard .w{font:800 2.7rem/1 var(--display);letter-spacing:-.02em}
+.wcard p{margin:.35rem 0 0;font-size:.95rem;line-height:1.4}
+.mood{font-weight:600;font-size:1.05rem;max-width:20rem;margin:0}
+.facts{display:grid;gap:.7rem;width:100%;max-width:22rem}
+.fact{display:flex;align-items:center;gap:.9rem;text-align:left;background:rgba(255,255,255,.9);color:#06281f;border-radius:20px;padding:.85rem 1rem;box-shadow:0 8px 20px rgba(0,0,0,.14)}
+.fact .e{flex:none;width:44px;height:44px;border-radius:14px;background:#00c2a8;display:grid;place-items:center}
+.fact svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fact strong{display:block;font:800 1.1rem/1.1 var(--display)}
+.fact span{font-size:.9rem}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;width:100%;max-width:23rem}
+.tile{background:rgba(255,255,255,.93);color:#2b0f1c;border-radius:20px;padding:.8rem .7rem;text-align:left}
+.tile svg{width:28px;height:28px;stroke:#5b3df5;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile strong{display:block;font:800 1rem/1.1 var(--display);margin:.35rem 0 .15rem}
+.tile span{font-size:.82rem;line-height:1.3;display:block}
+
+/* buttons */
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:54px;padding:0 1.6rem;border-radius:99px;border:0;background:#25d366;color:#06301a;font-weight:800;font-size:1.05rem;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.22);animation:wiggle 2.8s ease-in-out 2s infinite}
+@keyframes wiggle{0%,86%,100%{transform:none}90%{transform:rotate(-2.5deg) scale(1.04)}94%{transform:rotate(2.5deg) scale(1.04)}}
+.cta svg,.dock svg,.big svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bigs{display:grid;gap:.65rem;width:100%;max-width:23rem}
+.big{display:flex;align-items:center;gap:.9rem;text-align:left;text-decoration:none;background:#fff;color:#2b0f1c;border-radius:22px;padding:.8rem 1rem;box-shadow:0 10px 24px rgba(0,0,0,.18);min-height:66px}
+.big .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.big strong{display:block;font:800 1.1rem/1.1 var(--display)}
+.big span.t{font-size:.9rem;word-break:break-word}
+.again{border:0;background:rgba(255,255,255,.45);border-radius:99px;padding:.6rem 1.3rem;font-weight:700;cursor:pointer}
+
+.dock{position:absolute;z-index:4;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));display:flex;gap:10px;transition:transform .4s,opacity .4s}
+.dock.off{transform:translateY(130%);opacity:0;pointer-events:none}
+.dock a{height:56px;border-radius:99px;display:flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;font-weight:800;box-shadow:0 10px 24px rgba(0,0,0,.22);background:#fff;color:#2b0f1c}
+.dock .round{width:56px;flex:none}
+.dock .wa{flex:1;background:#25d366;color:#06301a;font-size:1.02rem}
+
+@media (max-height:700px){.allergy{display:none}.layers{max-height:40dvh}.sub{font-size:.95rem}.wcard .w{font-size:2.2rem}.tile{padding:.6rem .65rem}.tile span{font-size:.74rem}.fact span{font-size:.82rem}.can{width:min(40vw,26dvh)}}
+@media (min-width:700px){#stage{max-width:480px;left:50%;right:auto;width:480px;margin-left:-240px;border-radius:0;box-shadow:0 0 80px rgba(0,0,0,.5)}}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .pop,.can{opacity:1;transform:none}
+  .sprinkle{display:none}
+}
+</style>
+</head>
+<body>
+<noscript><p style="padding:2rem;color:#fff">Please turn on JavaScript to browse our flavours. To order, call or WhatsApp 081 289 1918.</p></noscript>
+<div id="stage" aria-live="off">
+  <div class="bars" id="bars" aria-hidden="true"></div>
+  <div class="top">
+    <div class="logo" id="logo"></div>
+    <button class="pp" id="pp" aria-label="Pause"></button>
+  </div>
+  <div class="zone" id="zone"></div>
+  <button class="sr" id="prevBtn">Previous slide</button>
+  <button class="sr" id="nextBtn">Next slide</button>
+  <main id="slide" class="slide"></main>
+  <nav class="dock" id="dock" aria-label="Order and contact"></nav>
+</div>
+
+<script>
+/* ============ EDIT THIS SECTION ============ */
+const SITE = {
+  name: "Bakes & Cakes BakeHouse",
+  tagline: "Crumbs of Joy",
+
+  // Contact details
+  phone: "081 289 1918",       // used for calls
+  whatsapp: "081 289 1918",    // used for WhatsApp orders
+  email: "order@bakescakes.co.za",
+  website: "www.bakescakes.co.za",
+  countryCode: "27",           // South Africa. A leading 0 is replaced with this.
+
+  // Care guidance. Check these against your own recipes before publishing.
+  care: { fridge: "2–5 °C", days: 3, openedHours: 24, restMinutes: 15 },
+
+  // Seconds each screen stays before moving on by itself
+  seconds: 7
+};
+
+// One entry per flavour. The QR code for each flavour links to  ?f=<slug>
+//  match:  finishes the sentence "Pick this when ..."
+//  image:  optional product photo, e.g. "images/vanilla.webp". Leave "" to use the drawn cake.
+//  layersImage / layers: optional "inside the can" photo and the names of its layers
+//  colors: the drawn cake (cake, cream, accent).  theme: screen colours (two background colours + text colour)
+//  ingredients / allergens: lists such as ["Flour", "Eggs", "Butter"]
+const FLAVOURS = [
+  { slug: "vanilla", name: "Vanilla", description: "A soft vanilla cake, light and simple.",
+    match: "you want something classic and comforting", image: "",
+    colors: { cake: "#f0d28f", cream: "#fffaf0", accent: "#ff4f6d" },
+    theme: { a: "#ffe066", b: "#ff9f43", fg: "#3a1d0f" }, ingredients: [], allergens: [] },
+  { slug: "chocolate", name: "Chocolate", description: "Rich chocolate cake for the sweet tooth.",
+    match: "you want something rich and indulgent", image: "",
+    colors: { cake: "#5a2e1f", cream: "#ffd9e8", accent: "#ff4f9a" },
+    theme: { a: "#6b3a24", b: "#d81b79", fg: "#fff4e6" }, ingredients: [], allergens: [] },
+  { slug: "red-velvet", name: "Red velvet", description: "Classic red velvet with a tender crumb.",
+    match: "it feels like a celebration",
+    image: "images/red-velvet.webp",
+    layersImage: "images/red-velvet-layers.webp",
+    layers: [{ name: "Swiss meringue buttercream", color: "#fff6e6" }, { name: "Red velvet cake", color: "#b5001f" }],
+    colors: { cake: "#c1121f", cream: "#fff6f0", accent: "#ffd23f" },
+    theme: { a: "#b5001f", b: "#f2385a", fg: "#ffffff" }, ingredients: [], allergens: [] }
+];
+
+// Word of the day. It changes every day and starts again after the last one.
+const WORDS = [
+  { w: "Savour", m: "Slow down for one bite. The best part of a sweet moment is noticing it." },
+  { w: "Joy", m: "Joy is rarely loud. Today it might be a spoon, a cold can and ten quiet minutes." },
+  { w: "Gather", m: "Good cake is better shared. Call someone and make a small occasion of today." },
+  { w: "Warmth", m: "Be the warmth in someone's day. A kind word costs nothing and lingers like vanilla." },
+  { w: "Treat", m: "You do not need a reason. Today, you are the reason." },
+  { w: "Gratitude", m: "Name three small good things from today before you take the first bite." },
+  { w: "Indulge", m: "A little indulgence is not a luxury, it is a reset. Enjoy it without apology." },
+  { w: "Patience", m: "Good things rise slowly. Trust the process, in the oven and in life." },
+  { w: "Delight", m: "Look for one small delight today. It is usually closer than you think." },
+  { w: "Kindness", m: "Leave something sweeter than you found it: a message, a smile, a slice." },
+  { w: "Comfort", m: "Some days need soft things: a warm blanket, a good song, a cold sweet bite." },
+  { w: "Celebrate", m: "Not every win is big. Celebrate the ones nobody saw you earn." },
+  { w: "Generous", m: "Share the bigger spoon. Generosity tastes better than sugar." },
+  { w: "Cherish", m: "Cherish the ordinary moments. They are the ones you will miss." },
+  { w: "Bloom", m: "Grow at your own pace. Even the finest cake needs time to rise." },
+  { w: "Glow", m: "Do something today that makes you glow, even if it is small." },
+  { w: "Gentle", m: "Be gentle with yourself. You are doing better than you think." },
+  { w: "Golden", m: "Make today a golden one: good company, good food and a good mood." },
+  { w: "Wonder", m: "Stay curious. Try a new flavour and let it surprise you." },
+  { w: "Together", m: "Sweetness multiplies when it is shared. Reach out to someone you love." },
+  { w: "Fresh", m: "A fresh start can begin at any hour. Today is as good as any." },
+  { w: "Sparkle", m: "Add a little sparkle where you can. Tiny touches change a whole day." },
+  { w: "Grace", m: "Give grace to others and to yourself. Everyone is mid-recipe." },
+  { w: "Cosy", m: "Find your cosy corner today and stay a little longer than planned." },
+  { w: "Tradition", m: "Make a small tradition of something sweet. Rituals turn days into memories." },
+  { w: "Heart", m: "Bake with heart, speak with heart, live with heart. It always shows." },
+  { w: "Honour", m: "Honour the people who feed you, in kitchens, at tables and in life." },
+  { w: "Treasure", m: "Treasure the people at your table. They are the best ingredient." },
+  { w: "Radiant", m: "Walk in as if the room was waiting for you. It was." },
+  { w: "Courage", m: "Try the thing that makes you nervous. Something sweet waits on the other side." },
+  { w: "Home", m: "Home is a feeling: warm, familiar, a little sweet. Carry it with you." }
+];
+/* ============ END OF EDIT SECTION ============ */
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- contact helpers ---------- */
+const intl = (n) => { const d = String(n).replace(/\D/g,''); return d.startsWith('0') ? SITE.countryCode + d.slice(1) : d; };
+const telLink = () => 'tel:+' + intl(SITE.phone);
+const waLink = (flavour) => 'https://wa.me/' + intl(SITE.whatsapp) + '?text=' + encodeURIComponent(
+  flavour ? `Hi! I'd like to order a ${flavour.name} cake in a can.` : `Hi! I'd like to order a cake in a can.`);
+const mailLink = (flavour) => 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(flavour ? `Order: ${flavour.name} cake in a can` : 'Cake in a can enquiry');
+const webLink = () => 'https://' + SITE.website.replace(/^https?:\/\//,'');
+
+/* ---------- word of the day ---------- */
+function todaysWord(){
+  const d = new Date();
+  const n = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000);
+  return { ...WORDS[n % WORDS.length], date: d.toLocaleDateString(undefined, { weekday: 'long', day: 'numeric', month: 'long' }) };
+}
+const greeting = () => { const h = new Date().getHours(); return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening'; };
+
+/* ---------- artwork ---------- */
+let artId = 0;
+function cakeArt(f){
+  const c = f.colors;
+  const id = 'can' + (artId++);
+  return `<svg viewBox="0 0 120 140" role="img" aria-label="A can of ${esc(f.name)} cake">
+    <defs><clipPath id="${id}"><rect x="28" y="50" width="64" height="78" rx="12"/></clipPath></defs>
+    <path d="M34 48 Q32 32 48 31 Q46 18 60 20 Q68 9 77 21 Q92 22 88 38 Q95 48 86 48 Z" fill="${c.cream}"/>
+    <path d="M44 40 Q60 34 78 40" fill="none" stroke="${c.cake}" stroke-opacity=".25" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="62" cy="13" r="6" fill="${c.accent}"/><path d="M62 8 q4 -6 9 -6" fill="none" stroke="#7a4a00" stroke-width="1.6" stroke-linecap="round"/>
+    <g clip-path="url(#${id})">
+      <rect x="28" y="50" width="64" height="78" fill="${c.cake}"/>
+      <rect x="28" y="74" width="64" height="9" fill="${c.cream}"/>
+      <rect x="28" y="102" width="64" height="9" fill="${c.cream}"/>
+      <rect x="32" y="50" width="7" height="78" fill="#fff" fill-opacity=".18"/>
+    </g>
+    <rect x="28" y="50" width="64" height="78" rx="12" fill="none" stroke="#fff" stroke-width="3"/>
+    <rect x="24" y="44" width="72" height="9" rx="4.5" fill="#ffd23f"/>
+    <path class="tw" d="M12 44 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 l6 -2 z" fill="#fff"/>
+    <path class="tw tw2" d="M108 78 l1.6 4.4 l4.4 1.6 l-4.4 1.6 l-1.6 4.4 l-1.6 -4.4 l-4.4 -1.6 l4.4 -1.6 z" fill="#fff"/>
+  </svg>`;
+}
+const picture = (f) => f.image ? `<img src="${esc(f.image)}" alt="${esc(f.name)} cake in a can">` : cakeArt(f);
+const miniMascot = `<svg viewBox="38 34 146 146" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M72 66 V50 Q72 40 82 40 H118 Q128 40 128 50 V66"/><path d="M58 96 V76 Q58 66 68 66 H132 Q142 66 142 76 V96"/>
+  <path d="M50 96 H146 Q156 100 150 110 Q160 116 152 124 Q158 134 154 140 V166 Q154 172 148 172 H50 Q44 172 44 166 V102 Q44 96 50 96 Z"/>
+  <path d="M66 120 l12 12 m0 -12 l-12 12 M102 120 l12 12 m0 -12 l-12 12"/><path d="M80 146 H100"/></g></svg>`;
+
+const ICON = {
+  cold: '<path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  jar: '<path d="M5 8h14v12H5zM8 8V5h8v3"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M5 19l2-2M3 21L21 3"/>',
+  fork: '<path d="M7 3v6a2.5 2.5 0 0 0 5 0V3M9.5 11v10M17 21V3c-2.5 1.5-3 5-3 8h3"/>',
+  up: '<path d="M12 20V5M6 11l6-6 6 6M6 22h12"/>',
+  leaf: '<path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/>',
+  can: '<path d="M6 5h12v15a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM6 9h12"/>',
+  phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+  chat: '<path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.4A9 9 0 1 1 21 12z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'
+};
+const svg = (n) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+
+/* ---------- slides ---------- */
+function buildSlides(startSlug){
+  const c = SITE.care;
+  const landed = startSlug && FLAVOURS.find(x => x.slug === startSlug.toLowerCase());
+  const list = landed ? [landed, ...FLAVOURS.filter(x => x !== landed)] : FLAVOURS.slice();
+  const secs = SITE.seconds * 1000;
+
+  const slides = [];
+
+  slides.push({ key: 'welcome', dur: secs + 1500, theme: { a: '#ff4f9a', b: '#ff9f43', fg: '#2b0f1c' },
+    html: () => {
+      const t = todaysWord();
+      const cans = FLAVOURS.slice(0,3).map((f,i) => `<div class="can" style="--i:${i}">${cakeArt(f)}</div>`).join('');
+      return `<span class="chip pop" style="--i:0">${greeting()}, and welcome</span>
+        <div class="trio">${cans}</div>
+        <h1 class="h1 pop" style="--i:3">Fresh cake<br>in a can</h1>
+        <aside class="wcard pop" style="--i:5" aria-label="Word of the day">
+          <div class="dt">${esc(t.date)}</div><div class="lb">Word of the day</div>
+          <div class="w">${esc(t.w)}</div><p>${esc(t.m)}</p></aside>
+        <div class="hint pop" style="--i:6">Tap to meet the flavours</div>`;
+    }});
+
+  list.forEach((f, i) => {
+    const label = landed && i === 0 ? "Here's your flavour" : 'Match your flavour';
+    if (f.image){
+      slides.push({ key: 'f-' + f.slug, flavour: f, dur: secs, theme: f.theme, cover: f.image, photoAlt: `${f.name} cake in a can`,
+        html: () => `<span class="chip pop" style="--i:0">${label}</span>
+          <h2 class="h1 pop" style="--i:1">${esc(f.name)}</h2>
+          <p class="mood pop" style="--i:2">Pick this when ${esc(f.match)}.</p>
+          <p class="sub pop" style="--i:3">${esc(f.description)}</p>`
+      });
+    } else {
+      slides.push({ key: 'f-' + f.slug, flavour: f, dur: secs, theme: f.theme,
+        html: () => `<span class="chip pop" style="--i:0">${label}</span>
+          <div class="can">${picture(f)}</div>
+          <h2 class="h1 pop" style="--i:3">${esc(f.name)}</h2>
+          <p class="mood pop" style="--i:4">Pick this when ${esc(f.match)}.</p>
+          <p class="sub pop" style="--i:5">${esc(f.description)}</p>
+          <a class="cta pop" style="--i:6" href="${waLink(f)}" rel="noopener">${svg('chat')}Order ${esc(f.name)}</a>`
+      });
+    }
+    if (f.layersImage){
+      slides.push({ key: 'l-' + f.slug, flavour: f, dur: secs + 1500, theme: f.theme,
+        html: () => `<span class="chip pop" style="--i:0">Inside the can</span>
+          <h2 class="h2 pop" style="--i:1">Layer by layer</h2>
+          <img class="layers pop" style="--i:2" src="${esc(f.layersImage)}" alt="${esc(f.name)} cake pulled apart to show its layers">
+          <div class="keys pop" style="--i:4">${(f.layers || []).map(l => `<span><i style="background:${esc(l.color)}"></i>${esc(l.name)}</span>`).join('')}</div>
+          <p class="sub allergy pop" style="--i:5">Allergies? Please ask us before you eat.</p>`
+      });
+    }
+  });
+
+  slides.push({ key: 'fresh', dur: secs, theme: { a: '#00c2a8', b: '#8bea8a', fg: '#06281f' },
+    html: () => `<span class="chip pop" style="--i:0">Why you will love it</span>
+      <h2 class="h2 pop" style="--i:1">Baked fresh.<br>Nothing added to last.</h2>
+      <div class="facts">
+        <div class="fact pop" style="--i:3"><div class="e">${svg('leaf')}</div><div><strong>No preservatives</strong><span>Just cake, the way it should taste.</span></div></div>
+        <div class="fact pop" style="--i:4"><div class="e">${svg('can')}</div><div><strong>Sealed in a can</strong><span>Easy to carry, share and gift.</span></div></div>
+        <div class="fact pop" style="--i:5"><div class="e">${svg('clock')}</div><div><strong>Best within ${c.days} days</strong><span>Keep it chilled and enjoy it fresh.</span></div></div>
+      </div>`
+  });
+
+  slides.push({ key: 'care', dur: secs + 2000, theme: { a: '#5b3df5', b: '#a05cff', fg: '#ffffff' },
+    html: () => {
+      const items = [
+        ['cold', 'Fridge', `Keep at ${c.fridge}`], ['clock', `${c.days} days`, 'From the baked date'],
+        ['jar', 'Once opened', `Reseal, finish in ${c.openedHours} hrs`], ['sun', 'No heat', 'Not in hot cars or sun'],
+        ['fork', 'Before you eat', `Rest ${c.restMinutes} min at room temp`], ['up', 'Upright', 'Carry it level']
+      ];
+      return `<span class="chip pop" style="--i:0">Keep it perfect</span>
+        <h2 class="h2 pop" style="--i:1">Look after it</h2>
+        <div class="tiles">${items.map(([i,t,d],k) => `<div class="tile pop" style="--i:${k+2}">${svg(i)}<strong>${esc(t)}</strong><span>${esc(d)}</span></div>`).join('')}</div>`;
+    }});
+
+  slides.push({ key: 'order', dur: null, last: true, theme: { a: '#ffb703', b: '#ff4f9a', fg: '#2b0f1c' },
+    html: () => `<span class="chip pop" style="--i:0">Orders and questions</span>
+      <h2 class="h2 pop" style="--i:1">Let's get you<br>a cake</h2>
+      <div class="bigs">
+        <a class="big pop" style="--i:2" href="${telLink()}"><span class="ic" style="background:#5b3df5">${svg('phone')}</span><span><strong>Call us</strong><span class="t">${esc(SITE.phone)}</span></span></a>
+        <a class="big pop" style="--i:3" href="${waLink(null)}" rel="noopener"><span class="ic" style="background:#16a34a">${svg('chat')}</span><span><strong>WhatsApp</strong><span class="t">${esc(SITE.whatsapp)}</span></span></a>
+        <a class="big pop" style="--i:4" href="${mailLink(null)}"><span class="ic" style="background:#d81b79">${svg('mail')}</span><span><strong>Email</strong><span class="t">${esc(SITE.email)}</span></span></a>
+        <a class="big pop" style="--i:5" href="${webLink()}" rel="noopener" target="_blank"><span class="ic" style="background:#ff7a18">${svg('globe')}</span><span><strong>Website</strong><span class="t">${esc(SITE.website)}</span></span></a>
+      </div>
+      <button class="again pop" style="--i:6" id="again">Start again</button>`
+  });
+  return slides;
+}
+
+/* ---------- player ---------- */
+const slides = buildSlides(new URLSearchParams(location.search).get('f'));
+let idx = 0, userPaused = calm, holding = false, bgEl = null;
+const stage = $('#stage'), barsEl = $('#bars'), slideEl = $('#slide'), dock = $('#dock'), pp = $('#pp');
+const SPRINKLES = ['#ff4f9a','#ffd23f','#00c2a8','#5b3df5','#ff7a18','#ffffff'];
+
+$('#logo').innerHTML = `${miniMascot}<span>${esc(SITE.name)}</span>`;
+
+function paintBg(theme, cover, alt){
+  const old = bgEl;
+  bgEl = document.createElement('div');
+  bgEl.className = 'bg';
+  bgEl.style.background = cover ? `linear-gradient(180deg, ${theme.a} 0%, ${theme.b} 100%)` : `linear-gradient(160deg, ${theme.a} 0%, ${theme.b} 100%)`;
+  if (cover){
+    bgEl.classList.add('has-photo');
+    bgEl.style.setProperty('--end', `color-mix(in srgb, ${theme.a} 26%, ${theme.b})`);
+    bgEl.insertAdjacentHTML('beforeend', `<div class="cover"><img src="${esc(cover)}" alt="${esc(alt || '')}"></div>`);
+  }
+  if (!calm && !cover){
+    for (let i = 0; i < 16; i++){
+      const s = document.createElement('i');
+      s.className = 'sprinkle';
+      const w = 5 + Math.random()*4;
+      s.style.cssText = `left:${Math.random()*100}%;width:${w}px;height:${w*2.6}px;background:${SPRINKLES[i % SPRINKLES.length]};--dx:${(Math.random()*80-40).toFixed(0)}px;animation-duration:${(9+Math.random()*9).toFixed(1)}s;animation-delay:-${(Math.random()*14).toFixed(1)}s`;
+      bgEl.appendChild(s);
+    }
+  }
+  stage.insertBefore(bgEl, stage.firstChild);
+  if (old) setTimeout(() => old.remove(), 700);
+  stage.style.setProperty('--fg', theme.fg);
+}
+
+function renderBars(){
+  const s = slides[idx];
+  barsEl.innerHTML = slides.map((x,i) => `<i class="${i < idx ? 'done' : i === idx ? 'on' + (x.last ? ' last' : '') : ''}" style="--dur:${(x.dur || 0)/1000}s"><b></b></i>`).join('');
+  const b = barsEl.querySelector('.on b');
+  if (b && !s.last) b.addEventListener('animationend', next, { once: true });
+  applyPause();
+}
+function applyPause(){
+  const paused = userPaused || holding || document.hidden;
+  const b = barsEl.querySelector('.on b');
+  if (b) b.style.animationPlayState = paused ? 'paused' : 'running';
+  pp.setAttribute('aria-label', userPaused ? 'Play' : 'Pause');
+  pp.innerHTML = userPaused
+    ? '<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>'
+    : '<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+}
+
+function renderDock(){
+  const s = slides[idx];
+  dock.classList.toggle('off', !!s.last);
+  const f = s.flavour || null;
+  dock.innerHTML = `<a class="round" href="${telLink()}" aria-label="Call ${esc(SITE.phone)}">${svg('phone')}</a>
+    <a class="wa" href="${waLink(f)}" rel="noopener">${svg('chat')}${f ? 'Order ' + esc(f.name) : 'Order on WhatsApp'}</a>
+    <a class="round" href="${mailLink(f)}" aria-label="Email ${esc(SITE.email)}">${svg('mail')}</a>`;
+}
+
+function show(i){
+  idx = Math.max(0, Math.min(slides.length - 1, i));
+  const s = slides[idx];
+  paintBg(s.theme, s.cover, s.photoAlt);
+  slideEl.className = 'slide' + (s.cover ? ' photo' : '');
+  slideEl.innerHTML = s.html();
+  slideEl.setAttribute('aria-label', s.key);
+  renderBars();
+  renderDock();
+  const again = $('#again'); if (again) again.addEventListener('click', () => show(0));
+}
+function next(){ if (idx < slides.length - 1) show(idx + 1); }
+function prev(){ if (idx > 0) show(idx - 1); }
+
+/* tap = next (right side) or back (left side). hold = pause. swipe = move. */
+const zone = $('#zone');
+let down = null, holdTimer = null;
+zone.addEventListener('pointerdown', e => {
+  down = { x: e.clientX, t: Date.now() };
+  holdTimer = setTimeout(() => { holding = true; applyPause(); }, 260);
+});
+const release = (e, cancelled) => {
+  clearTimeout(holdTimer);
+  if (!down) return;
+  const wasHolding = holding;
+  holding = false; applyPause();
+  const dx = e.clientX - down.x; down = null;
+  if (cancelled || wasHolding) return;
+  if (Math.abs(dx) > 45) { dx < 0 ? next() : prev(); return; }
+  const r = zone.getBoundingClientRect();
+  (e.clientX - r.left) < r.width * 0.32 ? prev() : next();
+};
+zone.addEventListener('pointerup', e => release(e, false));
+zone.addEventListener('pointercancel', e => release(e, true));
+zone.addEventListener('contextmenu', e => e.preventDefault());
+$('#prevBtn').addEventListener('click', prev);
+$('#nextBtn').addEventListener('click', next);
+pp.addEventListener('click', () => { userPaused = !userPaused; applyPause(); });
+document.addEventListener('visibilitychange', applyPause);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  else if (e.key === 'ArrowLeft') prev();
+  else if (e.key === ' ' && e.target === document.body){ e.preventDefault(); userPaused = !userPaused; applyPause(); }
+});
+
+show(0);
+</script>
+</body>
+</html>
