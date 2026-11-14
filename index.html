@@ -2,817 +2,983 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Red Velvet Cake in a Can | Bakes & Cakes BakeHouse</title>
-
-    <meta name="description" content="Discover our freshly baked Red Velvet Cake in a Can by Bakes & Cakes BakeHouse. Crumbs of Joy in every bite.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --burgundy: #6d172b;
-            --dark-burgundy: #45101e;
-            --cream: #faf7f2;
-            --white: #ffffff;
-            --gold: #b18a55;
-            --text: #302522;
-            --muted: #817570;
-            --light-border: #e9dfd7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: var(--cream);
-            color: var(--text);
-            font-family: 'Jost', sans-serif;
-            line-height: 1.7;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        /* NAVIGATION */
-
-        header {
-            background: var(--cream);
-            border-bottom: 1px solid var(--light-border);
-        }
-
-        .navigation {
-            max-width: 1200px;
-            margin: auto;
-            padding: 22px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            color: var(--burgundy);
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 27px;
-            font-weight: 700;
-            line-height: 1.1;
-        }
-
-        .logo span {
-            display: block;
-            color: var(--muted);
-            font-family: 'Jost', sans-serif;
-            font-size: 9px;
-            font-weight: 500;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--burgundy);
-        }
-
-        .nav-order {
-            background: var(--burgundy);
-            color: white;
-            padding: 11px 23px;
-            transition: 0.3s;
-        }
-
-        .nav-order:hover {
-            background: var(--dark-burgundy);
-        }
-
-        /* HERO */
-
-        .hero {
-            max-width: 1200px;
-            margin: auto;
-            padding: 75px 6%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 75px;
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 560px;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-content {
-            padding: 20px 0;
-        }
-
-        .eyebrow {
-            color: var(--gold);
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--burgundy);
-            font-size: clamp(48px, 6vw, 76px);
-            font-weight: 500;
-            line-height: 0.98;
-            margin-bottom: 25px;
-        }
-
-        .hero-description {
-            color: var(--muted);
-            font-size: 15px;
-            max-width: 430px;
-            margin-bottom: 30px;
-        }
-
-        .gold-line {
-            width: 65px;
-            height: 1px;
-            background: var(--gold);
-            margin: 25px 0;
-        }
-
-        .hero-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 23px;
-            font-style: italic;
-            color: var(--burgundy);
-            margin-bottom: 30px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 14px 30px;
-            background: var(--burgundy);
-            color: var(--white);
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .button:hover {
-            background: var(--dark-burgundy);
-            transform: translateY(-2px);
-        }
-
-        /* INTRODUCTION */
-
-        .introduction {
-            background: var(--white);
-            padding: 85px 6%;
-            text-align: center;
-        }
-
-        .section-inner {
-            max-width: 760px;
-            margin: auto;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 45px;
-            font-weight: 500;
-            color: var(--burgundy);
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .section-description {
-            color: var(--muted);
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        /* PRODUCT DETAILS */
-
-        .product-details {
-            max-width: 1100px;
-            margin: auto;
-            padding: 90px 6%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 75px;
-            align-items: center;
-        }
-
-        .product-details-image img {
-            width: 100%;
-            height: 460px;
-            object-fit: cover;
-        }
-
-        .product-details-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 43px;
-            color: var(--burgundy);
-            font-weight: 500;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .product-details-content p {
-            color: var(--muted);
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .details-list {
-            list-style: none;
-            margin: 25px 0;
-        }
-
-        .details-list li {
-            border-bottom: 1px solid var(--light-border);
-            padding: 12px 0;
-            font-size: 14px;
-        }
-
-        .details-list li::before {
-            content: "✦";
-            color: var(--gold);
-            margin-right: 12px;
-        }
-
-        /* CARE SECTION */
-
-        .care-section {
-            background: #f0e9e2;
-            padding: 85px 6%;
-        }
-
-        .care-container {
-            max-width: 1000px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .care-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
-            margin-top: 50px;
-        }
-
-        .care-item {
-            padding: 25px 20px;
-            background: var(--cream);
-        }
-
-        .care-item .icon {
-            color: var(--gold);
-            font-size: 27px;
-            margin-bottom: 12px;
-        }
-
-        .care-item h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--burgundy);
-            font-size: 23px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .care-item p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* ORDER SECTION */
-
-        .order-section {
-            background: var(--dark-burgundy);
-            color: var(--white);
-            padding: 85px 6%;
-            text-align: center;
-        }
-
-        .order-section .eyebrow {
-            color: #d8b98d;
-        }
-
-        .order-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .order-section p {
-            color: #e0cfd0;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .order-section .button {
-            background: var(--gold);
-            color: var(--dark-burgundy);
-        }
-
-        .order-section .button:hover {
-            background: #d0a66f;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            background: var(--white);
-            padding: 65px 6%;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--burgundy);
-            font-size: 38px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .contact p {
-            color: var(--muted);
-            font-size: 14px;
-            margin: 8px 0;
-        }
-
-        .contact a:hover {
-            color: var(--burgundy);
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: var(--cream);
-            border-top: 1px solid var(--light-border);
-            padding: 25px 6%;
-            text-align: center;
-        }
-
-        footer p {
-            color: var(--muted);
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
-
-        footer strong {
-            color: var(--burgundy);
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 768px) {
-
-            .navigation {
-                padding: 18px 5%;
-            }
-
-            .nav-links {
-                gap: 12px;
-                font-size: 11px;
-            }
-
-            .nav-links a:not(.nav-order) {
-                display: none;
-            }
-
-            .nav-order {
-                padding: 9px 15px;
-            }
-
-            .logo {
-                font-size: 23px;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 35px;
-                padding: 35px 6% 65px;
-            }
-
-            .hero-image {
-                order: 1;
-            }
-
-            .hero-content {
-                order: 2;
-                text-align: center;
-            }
-
-            .hero-image img {
-                height: auto;
-                max-height: 520px;
-                object-fit: contain;
-            }
-
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .gold-line {
-                margin: 22px auto;
-            }
-
-            h1 {
-                font-size: 55px;
-            }
-
-            .section-title {
-                font-size: 37px;
-            }
-
-            .introduction {
-                padding: 65px 7%;
-            }
-
-            .product-details {
-                grid-template-columns: 1fr;
-                gap: 35px;
-                padding: 65px 7%;
-            }
-
-            .product-details-image img {
-                height: auto;
-            }
-
-            .product-details-content h2 {
-                font-size: 37px;
-            }
-
-            .care-section {
-                padding: 65px 7%;
-            }
-
-            .care-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                margin-top: 35px;
-            }
-
-            .order-section {
-                padding: 65px 7%;
-            }
-
-            .order-section h2 {
-                font-size: 39px;
-            }
-
-            .contact {
-                padding: 55px 7%;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#45101e">
+<title>Bakes & Cakes BakeHouse | Crumbs of Joy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --burgundy: #6d172b;
+    --dark: #45101e;
+    --cream: #faf7f2;
+    --white: #ffffff;
+    --gold: #b18a55;
+    --text: #302522;
+    --muted: #817570;
+    --border: #e9dfd7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    min-height: 100vh;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    min-height: 78px;
+    padding: 15px 6%;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo {
+    color: var(--burgundy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.logo span {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+.header-note {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+/* SCREEN NAVIGATION */
+
+.screen {
+    display: none;
+    animation: appear .3s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FLAVOUR HOME */
+
+.home {
+    max-width: 1150px;
+    margin: auto;
+    padding: 55px 6% 70px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.intro h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 7vw, 65px);
+    font-weight: 500;
+    color: var(--burgundy);
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.intro p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.flavour-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.flavour-card {
+    border: 1px solid var(--border);
+    background: var(--white);
+    text-align: center;
+    padding: 13px 13px 24px;
+    transition: .25s ease;
+    color: var(--text);
+    width: 100%;
+}
+
+.flavour-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(69,16,30,.08);
+}
+
+.card-image {
+    height: 280px;
+    background: #f0e9e2;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    padding: 20px;
+    color: var(--muted);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+}
+
+.card-label {
+    display: block;
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.flavour-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--burgundy);
+    font-size: 30px;
+    font-weight: 500;
+    margin: 3px 0;
+}
+
+.tap-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.home-tagline {
+    text-align: center;
+    margin-top: 48px;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--burgundy);
+    font-size: 25px;
+    font-style: italic;
+}
+
+/* PRODUCT PAGE */
+
+.detail-page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 28px 6% 60px;
+}
+
+.back-button {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--burgundy);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.back-button:hover {
+    background: var(--burgundy);
+    color: var(--white);
+}
+
+.detail-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.detail-heading h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--burgundy);
+    font-size: clamp(42px, 6vw, 58px);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.detail-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.product-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.visual-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 12px;
+}
+
+.visual-card img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    background: #f0e9e2;
+}
+
+.visual-caption {
+    text-align: center;
+    padding: 15px 5px 5px;
+}
+
+.visual-caption span {
+    display: block;
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.visual-caption h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--burgundy);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.info-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 25px;
+}
+
+.info-card.full {
+    grid-column: 1 / -1;
+}
+
+.info-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 10px;
+}
+
+.info-card p,
+.info-card li {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.info-card ul {
+    list-style: none;
+}
+
+.info-card li {
+    padding: 5px 0;
+}
+
+.info-card li::before {
+    content: "✦";
+    color: var(--gold);
+    margin-right: 9px;
+}
+
+.notice {
+    border-left: 3px solid var(--gold);
+    background: var(--cream);
+    padding: 12px 15px;
+    margin-top: 15px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.storage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.storage-item {
+    background: var(--cream);
+    padding: 18px 12px;
+    text-align: center;
+}
+
+.storage-icon {
+    font-size: 25px;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.storage-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--burgundy);
+    font-size: 21px;
+    margin-bottom: 5px;
+}
+
+.storage-item p {
+    font-size: 12px;
+}
+
+/* ORDER */
+
+.order-panel {
+    margin-top: 25px;
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.order-panel h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.order-panel p {
+    color: #e0cfd0;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.order-button {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 13px 28px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.order-button:hover {
+    background: #d0a66f;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 25px 15px;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+footer strong {
+    color: var(--burgundy);
+}
+
+/* MOBILE */
+
+@media(max-width: 700px) {
+    header {
+        min-height: 70px;
+    }
+
+    .header-note {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .home {
+        padding: 42px 5% 50px;
+    }
+
+    .flavour-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        max-width: 390px;
+        margin: auto;
+    }
+
+    .flavour-card {
+        display: grid;
+        grid-template-columns: 42% 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        text-align: left;
+        padding: 10px;
+        column-gap: 17px;
+    }
+
+    .card-image {
+        grid-row: 1 / 3;
+        height: 135px;
+    }
+
+    .card-label {
+        align-self: end;
+        margin-top: 0;
+    }
+
+    .flavour-card h2 {
+        font-size: 28px;
+        align-self: center;
+        margin: 0;
+    }
+
+    .tap-label {
+        grid-column: 2;
+        margin-top: -8px;
+    }
+
+    .home-tagline {
+        margin-top: 35px;
+    }
+
+    .detail-page {
+        padding: 22px 5% 45px;
+    }
+
+    .product-visuals {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .visual-card img {
+        height: auto;
+        max-height: 420px;
+        object-fit: contain;
+    }
+
+    .detail-content {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card.full {
+        grid-column: auto;
+    }
+
+    .storage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .storage-item {
+        display: grid;
+        grid-template-columns: 45px 1fr;
+        text-align: left;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    .storage-icon {
+        grid-row: 1 / 3;
+        margin: 0;
+        text-align: center;
+    }
+
+    .storage-item h3 {
+        margin: 0;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<header>
+    <a class="logo" href="#" onclick="showHome(); return false;">
+        Bakes & Cakes
+        <span>BakeHouse</span>
+    </a>
+    <div class="header-note">Crumbs of Joy.</div>
+</header>
 
-    <header>
-        <nav class="navigation">
 
-            <a href="#" class="logo">
-                Bakes & Cakes
-                <span>BakeHouse</span>
-            </a>
+<!-- FLAVOUR SELECTION -->
 
-            <div class="nav-links">
-                <a href="#story">Our Story</a>
-                <a href="#product">The Cake</a>
-                <a href="#care">Care Guide</a>
-                <a href="#contact">Contact</a>
+<section id="homeScreen" class="screen active">
 
-                <a href="https://wa.me/27812891918"
-                   class="nav-order"
-                   target="_blank">
-                    Order Now
-                </a>
-            </div>
+    <div class="home">
 
-        </nav>
-    </header>
-
-
-    <!-- HERO SECTION -->
-
-    <main>
-
-        <section class="hero">
-
-            <div class="hero-image">
-                <img src="rv.jpeg"
-                     alt="Bakes and Cakes Red Velvet Cake in a Can">
-            </div>
-
-            <div class="hero-content">
-
-                <p class="eyebrow">Bakes & Cakes BakeHouse</p>
-
-                <h1>
-                    A Little
-                    <br>
-                    Red Velvet
-                    <br>
-                    Magic.
-                </h1>
-
-                <div class="gold-line"></div>
-
-                <p class="hero-description">
-                    Indulge in the richness of our signature Red Velvet
-                    Cake in a Can. Beautifully layered, freshly baked
-                    and made to bring a little sweetness to your day.
-                </p>
-
-                <p class="hero-tagline">
-                    Crumbs of Joy.
-                </p>
-
-                <a href="https://wa.me/27812891918"
-                   class="button"
-                   target="_blank">
-                    Order Your Cake
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- OUR STORY -->
-
-        <section class="introduction" id="story">
-
-            <div class="section-inner">
-
-                <p class="eyebrow">Made with love</p>
-
-                <h2 class="section-title">
-                    More Than Just a Cake
-                </h2>
-
-                <p class="section-description">
-                    At Bakes & Cakes BakeHouse, we believe that the
-                    sweetest moments deserve something special.
-
-                    Our Red Velvet Cake in a Can brings together
-                    beautiful layers of soft, rich red velvet cake
-                    and smooth Swiss meringue buttercream.
-
-                    Every spoonful is a little reminder that happiness
-                    can be found in the simplest things.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- PRODUCT DETAILS -->
-
-        <section class="product-details" id="product">
-
-            <div class="product-details-image">
-
-                <img src="rve.jpeg"
-                     alt="Red Velvet Cake with layers of Swiss meringue buttercream">
-
-            </div>
-
-            <div class="product-details-content">
-
-                <p class="eyebrow">Our signature creation</p>
-
-                <h2>
-                    The Red Velvet Experience
-                </h2>
-
-                <p>
-                    A delicious combination of soft red velvet cake
-                    and smooth, creamy Swiss meringue buttercream.
-                    Layered to create a beautiful balance of flavour
-                    and texture.
-                </p>
-
-                <ul class="details-list">
-
-                    <li>Freshly baked red velvet cake</li>
-
-                    <li>Swiss meringue buttercream</li>
-
-                    <li>Beautifully layered presentation</li>
-
-                    <li>Convenient cake-in-a-can experience</li>
-
-                </ul>
-
-                <a href="https://wa.me/27812891918"
-                   class="button"
-                   target="_blank">
-                    Place an Order
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- CARE GUIDE -->
-
-        <section class="care-section" id="care">
-
-            <div class="care-container">
-
-                <p class="eyebrow">A little care goes a long way</p>
-
-                <h2 class="section-title">
-                    Keeping Your Cake Perfect
-                </h2>
-
-                <p class="section-description">
-                    For the best experience, follow these simple
-                    storage and serving recommendations.
-                </p>
-
-                <div class="care-grid">
-
-                    <div class="care-item">
-
-                        <div class="icon">❄</div>
-
-                        <h3>Keep Refrigerated</h3>
-
-                        <p>
-                            Store your cake in the refrigerator
-                            at 2–5°C.
-                        </p>
-
-                    </div>
-
-
-                    <div class="care-item">
-
-                        <div class="icon">◷</div>
-
-                        <h3>Freshness</h3>
-
-                        <p>
-                            Best enjoyed within 3 days.
-                            Once opened, consume within 24 hours.
-                        </p>
-
-                    </div>
-
-
-                    <div class="care-item">
-
-                        <div class="icon">♡</div>
-
-                        <h3>Before Serving</h3>
-
-                        <p>
-                            Allow your cake to rest for approximately
-                            15 minutes at room temperature.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div style="margin-top:35px;">
-
-                    <p class="section-description">
-                        Keep upright and away from direct sunlight
-                        or excessive heat. Our cakes are made without
-                        preservatives.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ORDER SECTION -->
-
-        <section class="order-section">
-
-            <p class="eyebrow">Something sweet is waiting</p>
-
-            <h2>
-                Make Room for Joy.
-            </h2>
-
+        <div class="intro">
+            <div class="eyebrow">Discover something delicious</div>
+            <h1>Choose Your Flavour.</h1>
             <p>
-                Treat yourself or surprise someone special
-                with our Red Velvet Cake in a Can.
+                Every can has a little story. Tap a flavour below
+                to discover what's waiting inside.
             </p>
+        </div>
 
-            <a href="https://wa.me/27812891918?text=Hello%20Bakes%20%26%20Cakes%20BakeHouse%2C%20I%20would%20like%20to%20place%20an%20order%20for%20your%20Red%20Velvet%20Cake%20in%20a%20Can."
-               class="button"
-               target="_blank">
+        <div class="flavour-grid">
+
+            <button class="flavour-card" onclick="showFlavour('vanilla')">
+                <div class="card-image">
+                    <img src="vanilla.jpeg" alt="Vanilla cake"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="image-placeholder" style="display:none;">Vanilla</div>
+                </div>
+                <span class="card-label">Classic favourite</span>
+                <h2>Vanilla</h2>
+                <span class="tap-label">Tap to discover →</span>
+            </button>
+
+            <button class="flavour-card" onclick="showFlavour('chocolate')">
+                <div class="card-image">
+                    <img src="chocolate.jpeg" alt="Chocolate cake"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="image-placeholder" style="display:none;">Chocolate</div>
+                </div>
+                <span class="card-label">Rich and indulgent</span>
+                <h2>Chocolate</h2>
+                <span class="tap-label">Tap to discover →</span>
+            </button>
+
+            <button class="flavour-card" onclick="showFlavour('redvelvet')">
+                <div class="card-image">
+                    <img src="rv.jpeg" alt="Red Velvet cake in a can">
+                </div>
+                <span class="card-label">Signature creation</span>
+                <h2>Red Velvet</h2>
+                <span class="tap-label">Tap to discover →</span>
+            </button>
+
+        </div>
+
+        <div class="home-tagline">
+            A little sweetness. A lot of joy.
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FLAVOUR DETAILS -->
+
+<section id="detailScreen" class="screen">
+
+    <div class="detail-page">
+
+        <button class="back-button" onclick="showHome()">
+            ← All flavours
+        </button>
+
+        <div class="detail-heading">
+            <div class="eyebrow" id="productEyebrow"></div>
+            <h1 id="productTitle"></h1>
+            <p id="productSubtitle"></p>
+        </div>
+
+        <div class="product-visuals">
+
+            <div class="visual-card">
+                <img id="canImage" src="rv.jpeg" alt="Cake in a can">
+                <div class="visual-caption">
+                    <span>The outside</span>
+                    <h3>Your Cake in a Can</h3>
+                </div>
+            </div>
+
+            <div class="visual-card">
+                <img id="insideImage" src="rve.jpeg" alt="Inside view of cake">
+                <div class="visual-caption">
+                    <span>Take a closer look</span>
+                    <h3>What's Inside</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-content">
+
+            <div class="info-card">
+                <h2>Meet Your Flavour</h2>
+                <p id="productDescription"></p>
+            </div>
+
+            <div class="info-card">
+                <h2>The Layers</h2>
+                <ul id="layersList"></ul>
+            </div>
+
+            <div class="info-card full">
+                <h2>Allergen Information</h2>
+                <p id="allergenText"></p>
+
+                <div class="notice">
+                    <strong>Important:</strong>
+                    Always check the final ingredient and allergen
+                    label before consuming. Recipes and preparation
+                    environments may introduce allergens or
+                    cross-contact risks.
+                </div>
+            </div>
+
+            <div class="info-card full">
+                <h2>Storage & Serving Guide</h2>
+                <p>
+                    A little care keeps your cake delicious.
+                    Follow these recommendations for the best
+                    taste, texture and experience.
+                </p>
+
+                <div class="storage-grid">
+
+                    <div class="storage-item">
+                        <div class="storage-icon">❄</div>
+                        <h3>Keep Chilled</h3>
+                        <p>
+                            Store in the refrigerator at 2–5°C.
+                            Keep upright and away from heat.
+                        </p>
+                    </div>
+
+                    <div class="storage-item">
+                        <div class="storage-icon">◷</div>
+                        <h3>Once Opened</h3>
+                        <p>
+                            Enjoy within 24 hours of opening.
+                            Keep covered and refrigerated.
+                        </p>
+                    </div>
+
+                    <div class="storage-item">
+                        <div class="storage-icon">♡</div>
+                        <h3>Before Enjoying</h3>
+                        <p>
+                            Remove from the refrigerator and
+                            allow approximately 20 minutes
+                            at room temperature before eating.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="notice">
+                    <strong>Freshness tip:</strong>
+                    Enjoy within 3 days of purchase, provided
+                    the cake has been stored correctly and the
+                    use-by date on the packaging has not passed.
+                </div>
+            </div>
+
+            <div class="info-card full">
+                <h2>How to Enjoy</h2>
+                <ul>
+                    <li>Keep your cake chilled until you're ready.</li>
+                    <li>Open carefully and enjoy the layers.</li>
+                    <li>Allow approximately 20 minutes out of the refrigerator before eating.</li>
+                    <li>Use a clean spoon every time.</li>
+                    <li>Refrigerate promptly after serving.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="order-panel">
+            <h2>Ready for a Little Joy?</h2>
+            <p id="orderDescription"></p>
+            <a id="orderLink" class="order-button"
+               href="https://wa.me/27812891918" target="_blank"
+               rel="noopener">
                 Order on WhatsApp
             </a>
+        </div>
 
-        </section>
-
-
-        <!-- CONTACT -->
-
-        <section class="contact" id="contact">
-
-            <p class="eyebrow">We would love to hear from you</p>
-
-            <h2>
-                Get in Touch
-            </h2>
-
-            <p>
-                <strong>Phone / WhatsApp:</strong>
-                <a href="tel:+27812891918">081 289 1918</a>
-            </p>
-
-            <p>
-                <strong>Email:</strong>
-                <a href="mailto:order@bakescakes.co.za">
-                    order@bakescakes.co.za
-                </a>
-            </p>
-
-            <p>
-                <strong>Website:</strong>
-                <a href="https://www.bakescakes.co.za" target="_blank">
-                    www.bakescakes.co.za
-                </a>
-            </p>
-
-        </section>
-
-    </main>
+    </div>
+</section>
 
 
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © <span id="year"></span>
-            <strong>Bakes & Cakes BakeHouse</strong>.
-            All Rights Reserved.
-        </p>
-
-        <p style="margin-top:5px;">
-            Crumbs of Joy.
-        </p>
-
-    </footer>
+<footer>
+    © <span id="year"></span>
+    <strong>Bakes & Cakes BakeHouse</strong>.
+    Crumbs of Joy.
+    <br><br>
+    <a href="mailto:order@bakescakes.co.za">order@bakescakes.co.za</a>
+    &nbsp; | &nbsp;
+    <a href="tel:+27812891918">081 289 1918</a>
+</footer>
 
 
-    <script>
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
-    </script>
+<script>
+
+/* FLAVOUR CONTENT */
+
+const flavours = {
+
+    redvelvet: {
+        title: "Red Velvet",
+        eyebrow: "Our signature creation",
+        subtitle: "A little indulgence in every spoonful.",
+        can: "rv.jpeg",
+        inside: "rve.jpeg",
+
+        description:
+            "A beautiful combination of soft, rich red velvet cake and smooth Swiss meringue buttercream. Every layer brings together a delicate cake texture and creamy sweetness.",
+
+        layers: [
+            "Soft red velvet cake",
+            "Swiss meringue buttercream",
+            "Beautifully layered for every spoonful"
+        ],
+
+        allergens:
+            "Potential allergens to verify against the final recipe include wheat (gluten), eggs and milk. Refer to the confirmed ingredient and allergen label before consuming."
+    },
+
+    vanilla: {
+        title: "Vanilla",
+        eyebrow: "A timeless classic",
+        subtitle: "Simple, delicate and beautifully sweet.",
+        can: "vanilla.jpeg",
+        inside: "vanilla-inside.jpeg",
+
+        description:
+            "A classic vanilla cake experience with a delicate flavour and soft, tender texture. Discover the layers and ingredients of this flavour.",
+
+        layers: [
+            "Vanilla cake",
+            "Filling and frosting: confirm final recipe",
+            "Beautifully layered for every spoonful"
+        ],
+
+        allergens:
+            "Potential allergens to verify against the final recipe include wheat (gluten), eggs and milk. Refer to the confirmed ingredient and allergen label before consuming."
+    },
+
+    chocolate: {
+        title: "Chocolate",
+        eyebrow: "For the chocolate lovers",
+        subtitle: "Rich, comforting and full of chocolate goodness.",
+        can: "chocolate.jpeg",
+        inside: "chocolate-inside.jpeg",
+
+        description:
+            "A chocolate cake experience for those who love a rich, indulgent flavour. Discover the layers and ingredients of this flavour.",
+
+        layers: [
+            "Chocolate cake",
+            "Filling and frosting: confirm final recipe",
+            "Beautifully layered for every spoonful"
+        ],
+
+        allergens:
+            "Potential allergens to verify against the final recipe include wheat (gluten), eggs, milk and possibly soy, depending on the chocolate and other ingredients used. Refer to the confirmed ingredient and allergen label before consuming."
+    }
+};
+
+
+/* OPEN A FLAVOUR */
+
+function showFlavour(flavourName) {
+
+    const flavour = flavours[flavourName];
+
+    if (!flavour) return;
+
+    document.getElementById("homeScreen").classList.remove("active");
+    document.getElementById("detailScreen").classList.add("active");
+
+    document.getElementById("productTitle").textContent =
+        flavour.title;
+
+    document.getElementById("productEyebrow").textContent =
+        flavour.eyebrow;
+
+    document.getElementById("productSubtitle").textContent =
+        flavour.subtitle;
+
+    document.getElementById("productDescription").textContent =
+        flavour.description;
+
+    document.getElementById("allergenText").textContent =
+        flavour.allergens;
+
+    document.getElementById("canImage").src = flavour.can;
+    document.getElementById("canImage").alt =
+        flavour.title + " cake in a can";
+
+    document.getElementById("insideImage").src = flavour.inside;
+    document.getElementById("insideImage").alt =
+        "Inside view of " + flavour.title + " cake";
+
+    const layersList = document.getElementById("layersList");
+    layersList.innerHTML = "";
+
+    flavour.layers.forEach(function(layer) {
+        const item = document.createElement("li");
+        item.textContent = layer;
+        layersList.appendChild(item);
+    });
+
+    const message =
+        "Hello Bakes & Cakes BakeHouse! I am interested in your " +
+        flavour.title +
+        " Cake in a Can. Please share ordering details.";
+
+    document.getElementById("orderLink").href =
+        "https://wa.me/27812891918?text=" +
+        encodeURIComponent(message);
+
+    document.getElementById("orderDescription").textContent =
+        "Interested in our " + flavour.title +
+        " flavour? Contact us to place your order.";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    history.pushState(
+        { screen: "detail", flavour: flavourName },
+        "",
+        "#" + flavourName
+    );
+}
+
+
+/* RETURN TO FLAVOUR SELECTION */
+
+function showHome() {
+
+    document.getElementById("detailScreen").classList.remove("active");
+    document.getElementById("homeScreen").classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    history.pushState({ screen: "home" }, "", "#flavours");
+}
+
+
+/* BROWSER BACK BUTTON */
+
+window.addEventListener("popstate", function(event) {
+
+    if (event.state && event.state.screen === "detail") {
+        showFlavourWithoutHistory(event.state.flavour);
+    } else {
+        document.getElementById("detailScreen").classList.remove("active");
+        document.getElementById("homeScreen").classList.add("active");
+    }
+
+});
+
+function showFlavourWithoutHistory(flavourName) {
+
+    const flavour = flavours[flavourName];
+    if (!flavour) return;
+
+    document.getElementById("homeScreen").classList.remove("active");
+    document.getElementById("detailScreen").classList.add("active");
+
+    document.getElementById("productTitle").textContent = flavour.title;
+    document.getElementById("productEyebrow").textContent = flavour.eyebrow;
+    document.getElementById("productSubtitle").textContent = flavour.subtitle;
+    document.getElementById("productDescription").textContent = flavour.description;
+    document.getElementById("allergenText").textContent = flavour.allergens;
+
+    document.getElementById("canImage").src = flavour.can;
+    document.getElementById("insideImage").src = flavour.inside;
+
+    const list = document.getElementById("layersList");
+    list.innerHTML = "";
+
+    flavour.layers.forEach(function(layer) {
+        const li = document.createElement("li");
+        li.textContent = layer;
+        list.appendChild(li);
+    });
+
+    const message =
+        "Hello Bakes & Cakes BakeHouse! I am interested in your " +
+        flavour.title + " Cake in a Can. Please share ordering details.";
+
+    document.getElementById("orderLink").href =
+        "https://wa.me/27812891918?text=" + encodeURIComponent(message);
+
+    document.getElementById("orderDescription").textContent =
+        "Interested in our " + flavour.title +
+        " flavour? Contact us to place your order.";
+
+}
+
+
+/* FOOTER YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* SUPPORT DIRECT QR LINKS TO FLAVOURS */
+
+const requestedFlavour = window.location.hash.replace("#", "");
+
+if (flavours[requestedFlavour]) {
+    showFlavourWithoutHistory(requestedFlavour);
+}
+
+</script>
 
 </body>
 </html>
